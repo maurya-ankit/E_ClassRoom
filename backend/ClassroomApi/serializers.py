@@ -16,7 +16,6 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 
 
 class ClassRoomCreateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ClassRoom
         fields = [
@@ -78,13 +77,15 @@ class ClassPostListSerializer(serializers.ModelSerializer):
 
 class ClassPostRetrieveSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField()
+
     class Meta:
         model = ClassPost
-        fields = ['id','post_title','post_description','post_attachment_url','username','updated']
+        fields = ['id', 'post_title', 'post_description', 'post_attachment_url', 'username', 'updated']
 
 
 class ClassPostCommentListSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField()
+
     class Meta:
         model = ClassPostComment
         fields = ['post_comment', 'username', 'updated']

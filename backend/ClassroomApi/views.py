@@ -38,7 +38,7 @@ class ClassRoomListView(ListAPIView):
 
 class ClassDetailView(RetrieveAPIView):
     queryset = ClassRoom.objects.all()
-    serializer_class = ClassRoomCreateSerializer
+    serializer_class = ClassRoomSerializer
 
 
 class ClassRoomCreateView(CreateAPIView):
