@@ -81,13 +81,11 @@ class CustomAppBar extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     myClasses:response.data,
                 })
             })
             .catch(error =>{
-                console.log(error.response)
                 this.setState({
                     errorMessage:error.data,
                 })
@@ -104,7 +102,7 @@ class CustomAppBar extends React.Component {
                 onKeyDown={this.toggleDrawer(anchor, false)}
             >
                 <List>
-                    {['Classes', 'Calendar'].map((text,index) => (
+                    {['Classes'].map((text,index) => (
                         <ListItem button key={index} component="a" href="/">
                             <ListItemIcon>
                                 <Avatar aria-label="recipe" className={classes.avatar}>
@@ -118,7 +116,7 @@ class CustomAppBar extends React.Component {
                 <Divider style={{marginBottom: '10px'}}/>
                 <List subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
-                        Enrolled
+                        Enrolled/Teaching
                     </ListSubheader>}
                 >
                     {myClasses.map((Class,index) => (
@@ -134,7 +132,7 @@ class CustomAppBar extends React.Component {
                 </List>
                 <Divider/>
                 <List>
-                    {['Archived Classes', 'Settings'].map((text,index) => (
+                    {[].map((text,index) => (
                         <ListItem button key={index}>
                             <ListItemIcon>
                                 <Avatar aria-label="recipe" className={classes.avatar}>

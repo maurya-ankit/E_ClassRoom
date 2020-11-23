@@ -55,7 +55,6 @@ class SignIn extends React.Component {
                 localStorage.setItem('token', response.data.key);
                 axios.get(`${apiUrl}/rest-auth/user/`, {headers: {'Authorization': 'Token ' + localStorage.getItem('token')}})
                     .then(response => {
-                        console.log(response)
                         localStorage.setItem('username', response.data.username)
                     }).catch()
                 this.setState({

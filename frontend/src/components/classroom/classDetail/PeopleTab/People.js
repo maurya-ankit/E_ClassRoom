@@ -18,25 +18,21 @@ export default class People extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/students/?class_id=${this.props.id}`,authToken)
             .then(response=>{
-                console.log(response.data)
                 this.setState({
                     students:response.data,
                     totalStudents:response.data.length,
                 })
             })
             .catch(error =>{
-                console.log(error)
             }))
         trackPromise(axios.get(`${apiUrl}/teachers/?class_id=${this.props.id}`,authToken)
             .then(response=>{
-                console.log(response.data)
                 this.setState({
                     teachers:response.data,
                     totalTeachers:response.data.length,
                 })
             })
             .catch(error =>{
-                console.log(error)
             }))
     }
 

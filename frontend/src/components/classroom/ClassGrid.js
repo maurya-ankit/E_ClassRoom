@@ -86,13 +86,11 @@ class ClassGrid extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     myClasses:response.data,
                 })
             })
             .catch(error =>{
-                console.log(error.response)
                 this.setState({
                     errorMessage:error.data,
                 })

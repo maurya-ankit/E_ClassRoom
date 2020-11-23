@@ -1,19 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "E-ClassRoom",
+  "name": "Welcome to E-ClassRoom",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "shortlogo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "shortlogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "shortlogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

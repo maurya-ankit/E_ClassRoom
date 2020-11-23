@@ -62,7 +62,6 @@ class CreateClassPost extends Component
                     open:false,
                 })
             }).catch(error => {
-            console.log(error.response)
             this.setState({
                 status:error.response.status,
             })
@@ -78,7 +77,7 @@ class CreateClassPost extends Component
                     <Button onClick={this.handleClickOpen} style={{width: '100%',}}>
 
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        S
+                        {localStorage.getItem('username').charAt(0).toUpperCase()}
                     </Avatar>
 
                     <Typography variant='body2' component={"p"} color={"textSecondary"}
@@ -110,7 +109,7 @@ class CreateClassPost extends Component
                                 label={CreateField}
                                 name={CreateField}
                                 autoComplete={CreateField}
-                                onChange={e => {this.setState({[`${CreateField}`]: e.target.value});console.log(e.target.value)}}
+                                onChange={e => {this.setState({[`${CreateField}`]: e.target.value})}}
 
                             />))}
                         </DialogContent>

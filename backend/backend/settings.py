@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$vv%0g)^^@+6#5kcu!pg=cr3_ukv$wr_%%ocwv&j+i-uyu0y6u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 # 'https://e-classroom-api.herokuapp.com'
+                 ]
 
 # Application definition
 
@@ -136,6 +138,11 @@ STATIC_URL = '/static/'
 
 SITE_ID = 1
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.8.100:3000",
+    "https://127.0.0.1:3000",
+    "http://localhost:3080",
+    "https://e-classroom-5ca34.web.app"
+]
 CORS_ALLOW_CREDENTIALS = False
 django_heroku.settings(locals())

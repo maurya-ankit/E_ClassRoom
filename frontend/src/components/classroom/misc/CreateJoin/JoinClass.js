@@ -42,13 +42,12 @@ export default class JoinClass extends React.Component {
             class_code:this.state.class_code, };
         axios.post(`${apiUrl}/join/`, JoinData,authToken)
             .then(response => {
-                console.log(response)
+                window.location.reload(false);
                 this.setState({
                     open:false,
                     status:response.status,
                 })
             }).catch(error => {
-            console.log(error.response)
             this.setState({
                 status:error.response.status,
             })
@@ -75,7 +74,7 @@ export default class JoinClass extends React.Component {
                             id="classCode"
                             label="ClassCode"
                             type="text"
-                            onChange={e => {this.setState({class_code: e.target.value});console.log(e.target.value)}}
+                            onChange={e => {this.setState({class_code: e.target.value})}}
                             fullWidth
                         />
                     </DialogContent>

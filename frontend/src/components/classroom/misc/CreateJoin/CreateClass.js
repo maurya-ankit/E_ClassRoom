@@ -36,14 +36,12 @@ export default class CreateClass extends React.Component {
             room:this.state.room,};
         axios.post(`${apiUrl}/create/`, CreateData,authToken)
             .then(response => {
-                // window.location.reload(false);
-                console.log(response)
+                window.location.reload(false);
                 this.setState({
                 status:response.status,
                     open:false,
                 })
             }).catch(error => {
-                console.log(error.response)
                 this.setState({
                     status:error.response.status,
                 })

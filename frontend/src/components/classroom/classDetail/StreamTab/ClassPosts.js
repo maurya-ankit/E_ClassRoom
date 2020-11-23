@@ -38,13 +38,11 @@ class ClassPost extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/posts/?class_id=${this.props.id}`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     ClassPosts:response.data,
                 })
             })
             .catch(error =>{
-                console.log(error)
             }))
     }
     onSubmit=(e,id)=>{
@@ -56,7 +54,6 @@ class ClassPost extends React.Component {
                 this.setState({
                 })
             }).catch(error => {
-            console.log(error.response)
             this.setState({
             })
         })
@@ -119,9 +116,9 @@ class ClassPost extends React.Component {
                             <Divider style={{marginTop: '20px'}}/>
                             <Grid container spacing={1} justify='space-around'
                                   style={{marginTop: '10px'}}>
-                                <Grid item xs={1}>
+                                <Grid item xs={2}>
                                 <Avatar aria-label="recipe" className={classes.avatar}>
-                                    S
+                                    {localStorage.getItem('username').charAt(0).toUpperCase()}
                                 </Avatar>
                                 </Grid>
                                 <Grid item xs>
@@ -131,7 +128,7 @@ class ClassPost extends React.Component {
                                     id={index+"input"}
                                     variant='outlined'
                                     placeholder="Add a Class Comment"
-                                    style={{width: '90%',}}
+                                    style={{width: '80%',}}
                                     required
                                     onChange={e => {this.setState({postComment: e.target.value})}}
 

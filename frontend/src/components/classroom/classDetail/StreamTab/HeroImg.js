@@ -51,13 +51,11 @@ class HeroImg extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/${this.props.id}`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     classDetail:response.data,
                 })
             })
             .catch(error =>{
-                console.log(error)
             }))
     }
 
@@ -78,7 +76,7 @@ class HeroImg extends React.Component {
         let MeetUrl;
         if(classDetail.meetUrl)
         {
-            MeetUrl =<React.Fragment> <Typography>
+            MeetUrl =<React.Fragment> <Typography variant="caption" display="block">
                 Meet url: <Link href={classDetail.meetUrl}>{classDetail.meetUrl}</Link>
             </Typography></React.Fragment>
         }
@@ -97,6 +95,9 @@ class HeroImg extends React.Component {
                             </Typography>
                             <Typography variant="h5" color="inherit" paragraph>
                                 {classDetail.subject}
+                            </Typography>
+                            <Typography variant="caption" display="block" gutterBottom>
+                                Class Code {classDetail.class_code}
                             </Typography>
                             {section}
                             {MeetUrl}

@@ -21,7 +21,6 @@ class PostComments extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/postcomment/?class_id=${this.props.class_id}&post_id=${this.props.post_id}`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     PostComments:response.data,
                     isErrorFree:true,
@@ -29,7 +28,6 @@ class PostComments extends React.Component {
                 })
             })
             .catch(error =>{
-                console.log(error)
                 this.setState({
                     errorMessage:error,
                 })
@@ -59,6 +57,7 @@ class PostComments extends React.Component {
                     <Typography variant="body2" color="textSecondary" component="p" style={{marginLeft:'20px'}}>
                         {PostComment.post_comment}
                     </Typography>
+                            <hr/>
                         </React.Fragment>
                         ))}
                 </React.Fragment>

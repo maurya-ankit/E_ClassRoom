@@ -11,7 +11,8 @@ class ClassRoomSerializer(serializers.ModelSerializer):
             'class_name',
             'section',
             'subject',
-            'class_code'
+            'class_code',
+            'meetUrl'
         ]
 
 

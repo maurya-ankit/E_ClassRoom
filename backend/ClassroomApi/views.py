@@ -1,11 +1,3 @@
-from django.contrib.auth.models import User
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
-from rest_framework.exceptions import ValidationError
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
-# Create your views here.
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
 from ClassroomApi.models import ClassRoom, ClassSettings, ClassStudent, ClassPost, ClassPostComment, ClassTeacher
 from ClassroomApi.serializers import (
     ClassRoomSerializer,
@@ -17,6 +9,12 @@ from ClassroomApi.serializers import (
     ClassPostRetrieveSerializer,
     ClassPostCommentListSerializer, ClassTeacherListSerializer,
 )
+from django.contrib.auth.models import User
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.exceptions import ValidationError
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+# Create your views here.
+from rest_framework.permissions import IsAuthenticated
 
 
 class ClassRoomListView(ListAPIView):
@@ -117,9 +115,15 @@ class ClassPostCommentCreateView(CreateAPIView):
     serializer_class = ClassPostCommentListSerializer
 
     def perform_create(self, serializer):
-        serializer.save(class_fk=ClassRoom.objects.get(pk=self.request.GET['class_id']),
-                        post_fk=ClassPost.objects.get(pk=self.request.GET['post_id']),
-                        commenter=User.objects.get(pk=self.request.user.pk))
+        class_fk = ClassRoom.objects.get(pk=self.request.GET['class_id'])
+        commenter = User.objects.get(pk=self.request.user.pk)
+        post_fk = ClassPost.objects.get(pk=self.request.GET['post_id'])
+        if not ClassStudent.objects.filter(class_fk=class_fk, student_fk=commenter) or not ClassTeacher.objects.filter(
+                class_fk=class_fk, teacher_fk=commenter):
+            raise ValidationError("You are not a member of this Class")
+        serializer.save(class_fk=class_fk,
+                        post_fk=post_fk,
+                        commenter=commenter)
 
 
 class ClassPostCommentRetrieveView(RetrieveAPIView):

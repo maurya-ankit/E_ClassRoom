@@ -46,13 +46,11 @@ class WorkItem extends React.Component {
     componentDidMount() {
         trackPromise(axios.get(`${apiUrl}/posts/?class_id=${this.props.id}`,authToken)
             .then(response => {
-                console.log(response)
                 this.setState({
                     ClassPosts:response.data,
                 })
             })
             .catch(error =>{
-                console.log(error)
             }))
     }
     renderTinyUrl(url)

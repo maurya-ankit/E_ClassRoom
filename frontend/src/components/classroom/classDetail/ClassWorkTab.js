@@ -20,15 +20,11 @@ class ClassWorkTab extends React.Component {
         const classes = this.props;
         return (
             <React.Fragment>
-                <Grid container spacing={1} className={classes.mainGrid}>
-                    <Grid item xs={4} className={classes.dispNone}>
-                        <AllTopics/>
+                <Grid container spacing={5} className={classes.mainGrid}>
+                        {/*<AllTopics/>*/}
 
-                    </Grid>
-                    <Grid item xs >
                         <WorkMaterials id={this.props.id}/>
 
-                    </Grid>
 
                 </Grid>
             </React.Fragment>
